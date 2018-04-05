@@ -97,7 +97,8 @@ public class MyTest16 extends ClassLoader {
 
         System.out.println("------");
 
-        MyTest16 loader2 = new MyTest16("loader2");
+//        MyTest16 loader2 = new MyTest16("loader2");
+        MyTest16 loader2 = new MyTest16(loader1, "loader2");
         loader2.setPath("C:\\Users\\TF019387\\Desktop\\");
         Class<?> clazz2 = loader2.loadClass("com.chenhl.jvm.classloader.MyTest1");
         System.out.println("clazz: " + clazz2.hashCode());
