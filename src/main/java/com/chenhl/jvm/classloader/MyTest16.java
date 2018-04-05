@@ -9,6 +9,8 @@ public class MyTest16 extends ClassLoader {
 
     private String classLoaderName;
 
+    private String path;// 指定从哪里加载类
+
     private final String fileExtension = ".class";
 
     public MyTest16(String classLoaderName) {
@@ -21,12 +23,12 @@ public class MyTest16 extends ClassLoader {
         this.classLoaderName = classLoaderName;
     }
 
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     @Override
     protected Class<?> findClass(String className) throws ClassNotFoundException {
-        /*
-         发现这两行打印根本没有执行，说明该方法没有被调用。
-         原因，在构造这个类加载器的时候，使用的是系统类加载器作为父类加载器的，根据双亲委托机制，父加载器能加载，就有父类来加载。
-         */
         System.out.println("findClass invoked: " + className);
         System.out.println("class loader name: " + this.classLoaderName);
         byte[] data = loadClassData(className);
@@ -38,10 +40,10 @@ public class MyTest16 extends ClassLoader {
         byte[] data = null;
         ByteArrayOutputStream baos = null;
 
+        name = name.replace(".", "\\");
         try {
-            this.classLoaderName = this.classLoaderName.replace(".", "\\");
-
-            is = new FileInputStream(new File(name + this.fileExtension));
+//            this.classLoaderName = this.classLoaderName.replace(".", "\\");
+            is = new FileInputStream(new File(this.path + name + this.fileExtension));
             baos = new ByteArrayOutputStream();
 
             int ch = 0;
@@ -70,16 +72,24 @@ public class MyTest16 extends ClassLoader {
                 '}';
     }
 
-    public static void test(ClassLoader classLoader) throws Exception {
-        Class<?> clazz = classLoader.loadClass("com.chenhl.jvm.classloader.MyTest1");
-        Object object = clazz.newInstance();
-        System.out.println(object);
-        System.out.println(object.getClass().getClassLoader());
-    }
+//    public static void test(ClassLoader classLoader) throws Exception {
+//        Class<?> clazz = classLoader.loadClass("com.chenhl.jvm.classloader.MyTest1");
+//        Object object = clazz.newInstance();
+//        System.out.println(object);
+//        System.out.println(object.getClass().getClassLoader());
+//    }
 
     public static void main(String[] args)throws Exception {
         MyTest16 loader1 = new MyTest16("loader1");
-        test(loader1);
+//        test(loader1);
+
+//        loader1.setPath("C:\\Users\\TF019387\\myProjects\\jvm_learn\\out\\production\\classes");
+        loader1.setPath("C:\\Users\\TF019387\\Desktop\\");
+
+        Class<?> clazz = loader1.loadClass("com.chenhl.jvm.classloader.MyTest1");
+        System.out.println("clazz: "+ clazz.hashCode());
+        Object object = clazz.newInstance();
+        System.out.println(object);
     }
 
 }
