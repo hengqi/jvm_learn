@@ -84,6 +84,10 @@ public class MyTest16 extends ClassLoader {
 //        test(loader1);
 
 //        loader1.setPath("C:\\Users\\TF019387\\myProjects\\jvm_learn\\out\\production\\classes");
+        /*
+        如果类路径下没有MyTest1这个类，系统类加载器加载不成功，那么就会使用我们自定义的类加载器来加载，
+        如果存在，则使用系统类加载器来加载
+         */
         loader1.setPath("C:\\Users\\TF019387\\Desktop\\");
 
         Class<?> clazz = loader1.loadClass("com.chenhl.jvm.classloader.MyTest1");
