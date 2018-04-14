@@ -23,6 +23,13 @@ public class MyTest16 extends ClassLoader {
         this.classLoaderName = classLoaderName;
     }
 
+    /*
+        MyTest23时新增，用于指定新的系统类加载器时，所用到
+     */
+    public MyTest16(ClassLoader classLoader) {
+        super(classLoader);
+    }
+
     public void setPath(String path) {
         this.path = path;
     }
