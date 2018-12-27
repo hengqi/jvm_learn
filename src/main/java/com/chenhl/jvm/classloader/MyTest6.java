@@ -1,5 +1,9 @@
 package com.chenhl.jvm.classloader;
 
+/**
+ * 准备阶段，给类的静态变量赋初始值
+ * 初始化阶段，赋我们给的值
+ */
 public class MyTest6 {
 
     public static void main(String[] args) {

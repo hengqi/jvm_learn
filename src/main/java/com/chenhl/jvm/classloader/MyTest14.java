@@ -9,6 +9,7 @@ public class MyTest14 {
     public static void main(String[] args) throws IOException {
         // 获取classLoader的第二种方法
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        System.out.println(contextClassLoader);
         String resourceName = "com/chenhl/jvm/classloader/MyTest13.class";
 
         Enumeration<URL> resources = contextClassLoader.getResources(resourceName);
@@ -20,8 +21,8 @@ public class MyTest14 {
 
         System.out.println("---------");
 
-//        Class<?> clazz = MyTest14.class;
-        Class<?> clazz = String.class;
+        Class<?> clazz = MyTest14.class;
+//        Class<?> clazz = String.class;
         System.out.println(clazz.getClassLoader());
     }
 }

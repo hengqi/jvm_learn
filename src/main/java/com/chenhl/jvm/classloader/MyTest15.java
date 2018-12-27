@@ -10,13 +10,18 @@ public class MyTest15 {
         System.out.println("-----");
 
         MyTest15[] myTest15s = new MyTest15[2];
-        System.out.println(myTest15s.getClass().getClassLoader());
+        System.out.println(myTest15s.getClass().getClassLoader());//AppClassLoader
 
         System.out.println("-----");
 
         int[] ints = new int[2];
-        System.out.println(ints.getClass().getClassLoader());
-
-
+        System.out.println(ints.getClass().getClassLoader());//null
     }
 }
+
+/*
+    关于数组类型的类加载器：
+    1、对于数组类型的类，是由JVM在运行期自动的生成的
+    2、对于引用类型的数组，加载它的类加载器和加载数组中元素的类加载器相同
+    3、对于原生类型的数组，没有类加载器
+ */
