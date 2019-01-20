@@ -22,15 +22,18 @@ import java.util.ServiceLoader;
 
     ContextClassLoader的作用就是为了破坏Java的类加载委托机制。
 
-    当高层提供了统一的接口让底层去实现，同时又要在高层加载（或实例化）底层的类时，就必须要通过线程上下文类加载器来帮助高层的ClassLoader找到并加载该类。
+    当高层提供了统一的接口让底层去实现，同时又要在高层加载（或实例化）底层的类时，就必须要通过线程上下文类加载器来帮助高层的ClassLoader找到
+    并加载该类。
 
 
  */
 public class MyTest26 {
 
     public static void main(String[] args) {
-        // 加与不加这行代码的不同
-        Thread.currentThread().setContextClassLoader(MyTest26.class.getClassLoader().getParent());
+        // 加与不加这行代码的不同：加上这行代码后，iterator里没有加载到任何对象，因为这行代码指定了使用extclassloader来加载，而我们的mySql驱动是
+//        不在其加载目录下。
+//        Thread.currentThread().setContextClassLoader(MyTest26.class.getClassLoader().getParent());
+        // 添加VM参数：-XX:+TraceClassLoading
 
         ServiceLoader<Driver> loader = ServiceLoader.load(Driver.class);
 

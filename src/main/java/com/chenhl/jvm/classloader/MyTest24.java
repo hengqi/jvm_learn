@@ -11,7 +11,7 @@ package com.chenhl.jvm.classloader;
     分别用来获取和设置上下文类加载器
 
     如果没有通过setContextClassLoader(ClassLoader cl)进行设置的话，线程将继承其父线程的上下文类加载器。
-    Java应用运行时的初始线程的上下文类加载器时系统类加载器。在线程中运行的代码可以通过该类加载器来加载类和资源。
+    Java应用运行时的初始线程的上下文类加载器是系统类加载器。在线程中运行的代码可以通过该类加载器来加载类和资源。
 
     线程上下文类加载器的重要性：
     SPI （Service Provider Interface）

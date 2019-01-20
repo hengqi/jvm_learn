@@ -37,6 +37,8 @@ public class MyTest23 {
         System.out.println(ClassLoader.class.getClassLoader());
 
         // 验证扩展类加载器和系统类加载器是如何被启动类加载的
+        // 因为扩展类加载器和系统类加载器都是Launcher类的静态内部类，而Launcher只要是由启动类加载器来加载，就说明它说使用或依赖的类也是有
+        // 根类加载器加载的这一点
         System.out.println(Launcher.class.getClassLoader());
 
         System.out.println("-----");
