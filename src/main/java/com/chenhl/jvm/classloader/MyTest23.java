@@ -1,21 +1,20 @@
 package com.chenhl.jvm.classloader;
 
-/*
-    在运行期，一个Java类是由该类的完全限定名（binary name, 二进制名）和用于加载该类的定义类加载器（defining loader）所共同决定的。
-    如果同样名字的类，是由两个不同的加载器所加载，那么这些类就是不同的，即便.class文件的字节码完全一样，并且从相同的位置加载亦如此。
- */
-
 import sun.misc.Launcher;
 
 /*
-    在Oracle的Hotspot实现中，系统属性sun.boot.class.path如果修改错了，则运行会出错，提示错误信息：
-    Error occurred during initialization of VM
-    java/lang/NoClassDefFoundError: java/lang/Object
+在运行期，一个Java类是由该类的完全限定名（binary name, 二进制名）和用于加载该类的定义类加载器（defining loader）所共同决定的。
+如果同样名字的类，是由两个不同的加载器所加载，那么这些类就是不同的，即便.class文件的字节码完全一样，并且从相同的位置加载亦如此。
  */
 public class MyTest23 {
 
     public static void main(String[] args) {
         // 根类加载器加载的位置
+        // 在Oracle的Hotspot实现中，系统属性sun.boot.class.path如果修改错了，则运行会出错，
+        // 在classes目录下运行java -Dsun.boot.class.path=./ com.chenhl.jvm.classloader.MyTest23
+        // 提示错误信息：
+        // Error occurred during initialization of VM
+        // java/lang/NoClassDefFoundError: java/lang/Object
         System.out.println(System.getProperty("sun.boot.class.path"));
         // 扩展类加载器加载类的位置
         System.out.println(System.getProperty("java.ext.dirs"));
@@ -44,14 +43,14 @@ public class MyTest23 {
         System.out.println("-----");
 
         /*
-            指定系统类加载器，通过指定属性java -Djava.system.class.loader=com.chenhl.jvm.classloader.MyTest16来改变系统类加载器
-            显示指定系统类加载器：java -Djava.system.class.loader=com.chenhl.jvm.classloader.MyTest16 com.chenhl.jvm.classloader.MyTest23
+            指定系统类加载器，通过指定属性java -Djava.system.class.loader=com.chenhl.jvm.classloader.MyCustomClassLoader来改变系统类加载器
+            显示指定系统类加载器：java -Djava.system.class.loader=com.chenhl.jvm.classloader.MyCustomClassLoader com.chenhl.jvm.classloader.MyTest23
          */
         System.out.println(System.getProperty("java.system.class.loader"));
 
         System.out.println(MyTest23.class.getClassLoader());
 
-        System.out.println(MyTest16.class.getClassLoader());
+        System.out.println(MyCustomClassLoader.class.getClassLoader());
 
         System.out.println(ClassLoader.getSystemClassLoader());
 

@@ -11,8 +11,8 @@ import java.lang.reflect.Method;
 public class MyTest20 {
 
     public static void main(String[] args) throws Exception {
-        MyTest16 loader1 = new MyTest16("loader1");
-        MyTest16 loader2 = new MyTest16("loader2");
+        MyCustomClassLoader loader1 = new MyCustomClassLoader("loader1");
+        MyCustomClassLoader loader2 = new MyCustomClassLoader("loader2");
 
         Class<?> clazz1 = loader1.loadClass("com.chenhl.jvm.classloader.MyPerson");
         Class<?> clazz2 = loader2.loadClass("com.chenhl.jvm.classloader.MyPerson");

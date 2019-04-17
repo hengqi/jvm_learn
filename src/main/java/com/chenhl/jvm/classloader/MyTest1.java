@@ -14,7 +14,7 @@ public class MyTest1 {
 
         /* 输出结果并没有子类的静态代码块语句
            说明子类并没有被初始化，没有被初始化，是否加载了呢，
-           可以通过设置虚拟机参数-XX:TraceClassLoading用于追踪类的class信息并打印出来
+           可以通过设置虚拟机参数-XX:+TraceClassLoading用于追踪类的class信息并打印出来
 
            [Loaded com.chenhl.jvm.classloader.MyParent1 from file:/C:/Users/TF019387/myProjects/jvm_learn/out/production/classes/]
            [Loaded com.chenhl.jvm.classloader.MyChild1 from file:/C:/Users/TF019387/myProjects/jvm_learn/out/production/classes/]
@@ -47,7 +47,7 @@ class MyParent1 {
 
 class MyChild1 extends MyParent1 {
 
-    public static String str2 = "welcome";
+//    public static String str2 = "welcome";
 
     static {
         System.out.println("MyChild static block.");

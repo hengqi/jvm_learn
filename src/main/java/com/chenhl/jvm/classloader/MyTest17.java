@@ -3,7 +3,7 @@ package com.chenhl.jvm.classloader;
 public class MyTest17 {
 
     public static void main(String[] args) throws Exception{
-        MyTest16 loader1 = new MyTest16("loader1");
+        MyCustomClassLoader loader1 = new MyCustomClassLoader("loader1");
         Class<?> clazz = loader1.loadClass("com.chenhl.jvm.classloader.MySample");
 
         System.out.println("clazz: " + clazz.hashCode());

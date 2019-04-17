@@ -1,13 +1,15 @@
 package com.chenhl.jvm.classloader;
 
-
+/**
+ * 常量的本质与反编译及助记符
+ */
 public class MyTest2 {
 
     public static void main(String[] args) {
-//        System.out.println(MyParent2.str);
+        System.out.println(MyParent2.str);
 //        System.out.println(MyParent2.s);
 //        System.out.println(MyParent2.i);
-        System.out.println(MyParent2.m);
+//        System.out.println(MyParent2.m);
     }
 }
 
@@ -15,13 +17,13 @@ class MyParent2 {
 
 
 //    public static String str = "hello world";
-//    public static final String str = "hello world";
+    public static final String str = "hello world";
 
 //    public static final short s = 7;
 
 //    public static final int i = 128;
 
-    public static final int m = -2;
+//    public static final int m = -2;
 
     static {
         System.out.println("MyParent2 static block");

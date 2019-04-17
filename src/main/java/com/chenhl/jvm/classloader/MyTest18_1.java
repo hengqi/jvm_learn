@@ -6,9 +6,9 @@ package com.chenhl.jvm.classloader;
 public class MyTest18_1 {
 
     public static void main(String[] args) throws Exception {
-        MyTest16 loader1 = new MyTest16("loader1");
+        MyCustomClassLoader loader1 = new MyCustomClassLoader("loader1");
 
-        loader1.setPath("C:\\Users\\TF019387\\Desktop\\");
+//        loader1.setPath("C:\\Users\\TF019387\\Desktop\\");
 
         Class<?> clazz = loader1.loadClass("com.chenhl.jvm.classloader.MyTest1");
         System.out.println("clazz: " + clazz.hashCode());

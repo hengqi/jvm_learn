@@ -5,22 +5,34 @@ import java.io.*;
 /**
  * 自定义类加载器
  *
- * ClassLoader虽然是抽象类，但没有抽象方法
  */
-public class MyTest16 extends ClassLoader {
+public class MyCustomClassLoader extends ClassLoader {
 
     private String classLoaderName;
 
+    private String path;// 指定从哪里加载类
+
     private final String fileExtension = ".class";
 
-    public MyTest16(String classLoaderName) {
+    public MyCustomClassLoader(String classLoaderName) {
         super();//将系统类加载器当做该类加载器的父加载器
         this.classLoaderName = classLoaderName;
     }
 
-    public MyTest16(ClassLoader parent, String classLoaderName) {
+    public MyCustomClassLoader(ClassLoader parent, String classLoaderName) {
         super(parent);//显示指定父加载器
         this.classLoaderName = classLoaderName;
+    }
+
+    /*
+        MyTest23时新增，用于指定新的系统类加载器时，所用到
+     */
+    public MyCustomClassLoader(ClassLoader classLoader) {
+        super(classLoader);
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     @Override
@@ -36,8 +48,9 @@ public class MyTest16 extends ClassLoader {
         byte[] data = null;
         ByteArrayOutputStream baos = null;
 
+        name = name.replace(".", "\\");
         try {
-            is = new FileInputStream(new File(name + this.fileExtension));
+            is = new FileInputStream(new File(this.path + name + this.fileExtension));
             baos = new ByteArrayOutputStream();
 
             int ch = 0;
@@ -64,18 +77,6 @@ public class MyTest16 extends ClassLoader {
         return "MyTest16{" +
                 "classLoaderName='" + classLoaderName + '\'' +
                 '}';
-    }
-
-    public static void test(ClassLoader classLoader) throws Exception {
-        Class<?> clazz = classLoader.loadClass("com.chenhl.jvm.classloader.MyTest1");
-        Object object = clazz.newInstance();
-        System.out.println(object);
-        System.out.println(object.getClass().getClassLoader());
-    }
-
-    public static void main(String[] args)throws Exception {
-        MyTest16 loader1 = new MyTest16("loader1");
-        test(loader1);
     }
 
 }

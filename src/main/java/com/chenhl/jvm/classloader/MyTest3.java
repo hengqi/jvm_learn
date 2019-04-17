@@ -2,6 +2,9 @@ package com.chenhl.jvm.classloader;
 
 import java.util.UUID;
 
+/**
+ * 编译期常量与运行期常量的区别
+ */
 public class MyTest3 {
 
     public static void main(String[] args) {

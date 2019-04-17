@@ -1,5 +1,8 @@
 package com.chenhl.jvm.classloader;
 
+/**
+ * 数组创建本质
+ */
 public class MyTest4 {
 
     public static void main(String[] args) {

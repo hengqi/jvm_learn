@@ -16,6 +16,7 @@ public class MyTest6 {
 class Singleton {
 
     public static  int counter1;
+//    public static  int counter1=1;
 
     private static Singleton singleton = new Singleton();// 此时counter1 为1和counter2为0
 
