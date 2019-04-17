@@ -1,12 +1,14 @@
 package com.chenhl.jvm.classloader;
 
+import java.util.Random;
+
 /**
  * 常量的本质与反编译及助记符
  */
 public class MyTest2 {
 
     public static void main(String[] args) {
-        System.out.println(MyParent2.str);
+        System.out.println(MyParent2.a);
 //        System.out.println(MyParent2.s);
 //        System.out.println(MyParent2.i);
 //        System.out.println(MyParent2.m);
@@ -17,7 +19,8 @@ class MyParent2 {
 
 
 //    public static String str = "hello world";
-    public static final String str = "hello world";
+//    public static final String str = "hello world";
+    public static final int a = new Random().nextInt(3);
 
 //    public static final short s = 7;
 

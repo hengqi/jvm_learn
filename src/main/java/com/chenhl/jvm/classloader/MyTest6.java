@@ -15,14 +15,14 @@ public class MyTest6 {
 
 class Singleton {
 
-    public static  int counter1;
-//    public static  int counter1=1;
+//    public static  int counter1;
+    public static  int counter1=1;
 
-    private static Singleton singleton = new Singleton();// 此时counter1 为1和counter2为0
+//    private static Singleton singleton = new Singleton();// 此时counter1 为1和counter2为0
 
     public static int counter2 = 0;
 
-//    private static Singleton singleton = new Singleton();// 此时counter1和counter2都是1
+    private static Singleton singleton = new Singleton();// 此时counter1和counter2都是1
 
     private Singleton() {
         counter1 ++;

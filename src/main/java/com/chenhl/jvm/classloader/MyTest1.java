@@ -22,7 +22,7 @@ public class MyTest1 {
            说明子类虽然没有被初始化，但也被加载到内存了
 
         */
-        System.out.println(MyChild1.str);
+//        System.out.println(MyChild1.str);
 
         /*
            此时会输出子类的静态代码块语句
@@ -31,7 +31,7 @@ public class MyTest1 {
            而str2直接定义在子类里所以会导致子类的初始化。
            在初始化子类的时候属于主动使用中的一种，一个子类在初始化时，会导致所有的父类先初始化。
          */
-//        System.out.println(MyChild1.str2);
+        System.out.println(MyChild1.str2);
 
     }
 }
@@ -47,7 +47,7 @@ class MyParent1 {
 
 class MyChild1 extends MyParent1 {
 
-//    public static String str2 = "welcome";
+    public static String str2 = "welcome";
 
     static {
         System.out.println("MyChild static block.");
